@@ -1,8 +1,5 @@
-# ADS12xx-Library
-Library for connecting the Ti ADS1248 and ADS1256 24bit ADC to the Teensy 3.1
-
-## Example
-The ADS12xx-Library.ino provides an example on how to implement and test the ads hardware.
+# ADS1248
+Arduino ADS1248 Shield Library which is a modified version of the Flydroid library. As such it inherits the MIT License.
 
 
 ## License 

@@ -87,21 +87,21 @@ void loop() {
 		 */
         while (true){
           if (channel == 0){
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN1 | MUX_SN2_AIN7));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN3));
             channel = 1;
           } else if (channel == 1){
             Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN7));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN4 | MUX_SN2_AIN5));
             
             channel = 2;
           } else if (channel == 2){
             Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN3 | MUX_SN2_AIN7));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN6 | MUX_SN2_AIN7));
             ADS.SetRegisterValue(SYS0, DOR3_5 | PGA2_2); //
             channel = 3;
           } else if (channel == 3){
             Serial.print(",");
-            Serial.println(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN7));
+            Serial.println(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN1));
             ADS.SetRegisterValue(SYS0, DOR3_5 | PGA2_128);
             channel = 0;
           }
@@ -116,19 +116,19 @@ void loop() {
     gives 8 sps per channel, or 8sps total
      */        while (true){
           if (channel == 0){
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN1 | MUX_SN2_AIN7));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN3));
             channel = 1;
           } else if (channel == 1){
             Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN7));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN4 | MUX_SN2_AIN5));
             channel = 2;
           } else if (channel == 2){
             Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN3 | MUX_SN2_AIN7));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN6 | MUX_SN2_AIN7));
             channel = 3;
           } else if (channel == 3){
             Serial.print(",");
-            Serial.println(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN7));
+            Serial.println(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN1));
 //            ADS.SetRegisterValue(SYS0, DOR3_5 | PGA2_128);
             channel = 0;
           }
@@ -139,16 +139,16 @@ void loop() {
         data_count = 0;
         while (data_count < 21){
           if (channel == 0){
-            B += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN1 | MUX_SN2_AIN7);
+            B += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN3);
             channel = 1;
           } else if (channel == 1){
-            T += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN7);
+            T += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN4 | MUX_SN2_AIN5);
             channel = 2;
           } else if (channel == 2){
-            I += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN3 | MUX_SN2_AIN7);
+            I += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN6 | MUX_SN2_AIN7);
             channel = 3;
           } else if (channel == 3){
-            O += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN7);
+            O += ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN1);
             channel = 0;
             data_count++;
           }

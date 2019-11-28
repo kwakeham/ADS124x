@@ -36,8 +36,8 @@ void setup()
 
   ADS.SetRegisterValue(MUX1, BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN1);
   ADS.SetRegisterValue(MUX1, MUXCAL2_NORMAL | VREFCON1_ON | REFSELT1_ON_REF0);
-  ADS.SetRegisterValue(SYS0, DOR3_40 | PGA2_128);
-  Serial.println("Default Values are Pin = Ain0, Nin = Ain1, 2.048 Ref on and internally connected to Ref 0, Ref 0 selected (external), datarate of 40sps and gain of 128");
+  ADS.SetRegisterValue(SYS0, DOR3_10 | PGA2_128);
+  Serial.println("Default Values are Pin = Ain0, Nin = Ain1, 2.048 Ref on and internally connected to Ref 0, Ref 0 selected (external), datarate of 10sps and gain of 128");
 
 }
 
@@ -84,21 +84,9 @@ void loop() {
 		 */
         while (true){
           if (channel == 0){
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN7 | MUX_SN2_AIN2));
+            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN2 | MUX_SN2_AIN3));
             channel = 1;
           } else if (channel == 1){
-            Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN7 | MUX_SN2_AIN4));
-            channel = 2;
-          } else if (channel == 2){
-            Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN7 | MUX_SN2_AIN5));
-            channel = 3;
-          } else if (channel == 3){
-            Serial.print(",");
-            Serial.print(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN7 | MUX_SN2_AIN6));
-            channel = 4;
-          } else if (channel == 4){
             Serial.print(",");
             Serial.println(ADS.GetConversion_Mux(BCS1_1 | MUX_SP2_AIN0 | MUX_SN2_AIN1));
             channel = 0; //sets the next channel
